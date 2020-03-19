@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk';
+import logger from 'redux-logger'
+import styled from 'styled-components';
+import CatFacts from './components/CatFacts'
+import { Reducer } from './reducers/Reducer'
+
+
 
 function App() {
+  const Div = styled.div `
+  display:flex;
+  flex-direction:column;
+  text-align:center;
+  margin-top: 20%;
+  margin-left: 2%;
+  margin-right: 2%;
+  justify-content:center;
+  background-color: lightgrey;
+`;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div className='AppTwo'>
+    <Div className="App">
+      <h1> Cat Facts </h1>
+      <CatFacts />
+    </Div>
+  </div>
   );
 }
 
-export default App;
+export const store = createStore(Reducer, applyMiddleware(thunk, logger));
+
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.isLoading,
+    Fact: state.Fact,
+    error: state.error
+  }
+}
+export default connect(mapStateToProps,{})(App);
