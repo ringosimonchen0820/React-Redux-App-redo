@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const Fact = (props) => {
+const CatFacts = (props) => {
   const classes = useStyles();
   const Div = styled.div `
   text:align-center;
@@ -38,4 +38,4 @@ const mapStateToProps = (state) => {
       error: state.error
     }
   }
-export default connect(mapStateToProps,{fetchFact})(Fact);
+export default connect(mapStateToProps,{fetchFact})(CatFacts);

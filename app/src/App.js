@@ -4,8 +4,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
 import logger from 'redux-logger'
 import styled from 'styled-components';
-import axios from "axios";
-import Fact from './components/Fact'
+import CatFacts from './components/CatFacts'
 import { Reducer } from './reducers/Reducer'
 
 
@@ -26,7 +25,7 @@ function App() {
   <div className='AppTwo'>
     <Div className="App">
       <h1> Cat Facts </h1>
-      <Fact />
+      <CatFacts />
     </Div>
   </div>
   );
